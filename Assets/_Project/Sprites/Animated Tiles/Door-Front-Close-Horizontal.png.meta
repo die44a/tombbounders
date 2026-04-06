@@ -123,10 +123,10 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 16
-        height: 51
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 48
+        height: 72
+      alignment: 9
+      pivot: {x: 0.25, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -143,12 +143,12 @@ TextureImporter:
       name: Door-Front-Close-Horizontal_1
       rect:
         serializedVersion: 2
-        x: 39
+        x: 48
         y: 0
-        width: 32
-        height: 50
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 48
+        height: 72
+      alignment: 9
+      pivot: {x: 0.25, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -165,12 +165,12 @@ TextureImporter:
       name: Door-Front-Close-Horizontal_2
       rect:
         serializedVersion: 2
-        x: 87
+        x: 96
         y: 0
-        width: 41
-        height: 42
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 48
+        height: 72
+      alignment: 9
+      pivot: {x: 0.25, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -187,12 +187,12 @@ TextureImporter:
       name: Door-Front-Close-Horizontal_3
       rect:
         serializedVersion: 2
-        x: 135
+        x: 144
         y: 0
-        width: 45
-        height: 40
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 48
+        height: 72
+      alignment: 9
+      pivot: {x: 0.25, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -209,12 +209,12 @@ TextureImporter:
       name: Door-Front-Close-Horizontal_4
       rect:
         serializedVersion: 2
-        x: 183
+        x: 192
         y: 0
-        width: 18
-        height: 36
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 48
+        height: 72
+      alignment: 9
+      pivot: {x: 0.25, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -231,12 +231,12 @@ TextureImporter:
       name: Door-Front-Close-Horizontal_5
       rect:
         serializedVersion: 2
-        x: 200
-        y: 2
-        width: 32
-        height: 31
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 240
+        y: 0
+        width: 48
+        height: 72
+      alignment: 9
+      pivot: {x: 0.25, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -253,12 +253,12 @@ TextureImporter:
       name: Door-Front-Close-Horizontal_6
       rect:
         serializedVersion: 2
-        x: 231
+        x: 288
         y: 0
-        width: 297
-        height: 36
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 48
+        height: 72
+      alignment: 9
+      pivot: {x: 0.25, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -271,11 +271,99 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Door-Front-Close-Horizontal_7
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 0
+        width: 48
+        height: 72
+      alignment: 9
+      pivot: {x: 0.25, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8587dc52f1d413342a38c71a2c25b388
+      internalID: 1347159815
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Door-Front-Close-Horizontal_8
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 48
+        height: 72
+      alignment: 9
+      pivot: {x: 0.25, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3674a8821e72aa5448a7d9260179f129
+      internalID: 1283276210
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Door-Front-Close-Horizontal_9
+      rect:
+        serializedVersion: 2
+        x: 432
+        y: 0
+        width: 48
+        height: 72
+      alignment: 9
+      pivot: {x: 0.25, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 528281a8af633b345a7b378d5b9e4358
+      internalID: -45730297
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Door-Front-Close-Horizontal_10
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 0
+        width: 48
+        height: 72
+      alignment: 9
+      pivot: {x: 0.25, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b657668d3fbd684182c18879af6e635
+      internalID: -1776083897
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: bf5e1aac4eaf11b4da9cd600b940f6aa
     internalID: 0
     vertices: []
     indices: 
@@ -283,15 +371,21 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":48.0,"y":72.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.25,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":9,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
       Door-Front-Close-Horizontal_0: -1649485505536208374
       Door-Front-Close-Horizontal_1: -7058034387639987752
+      Door-Front-Close-Horizontal_10: -1776083897
       Door-Front-Close-Horizontal_2: 8598015973099143511
       Door-Front-Close-Horizontal_3: -2045654297448314403
       Door-Front-Close-Horizontal_4: -8457570800039902182
       Door-Front-Close-Horizontal_5: 8428240613800198494
       Door-Front-Close-Horizontal_6: -439757971431376735
+      Door-Front-Close-Horizontal_7: 1347159815
+      Door-Front-Close-Horizontal_8: 1283276210
+      Door-Front-Close-Horizontal_9: -45730297
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

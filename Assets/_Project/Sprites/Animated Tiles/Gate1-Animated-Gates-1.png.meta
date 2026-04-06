@@ -133,12 +133,12 @@ TextureImporter:
       name: Gate1-Animated-Gates-1_0
       rect:
         serializedVersion: 2
-        x: 16
-        y: 5
-        width: 40
-        height: 39
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 12
+        y: 0
+        width: 48
+        height: 48
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -155,12 +155,12 @@ TextureImporter:
       name: Gate1-Animated-Gates-1_1
       rect:
         serializedVersion: 2
-        x: 88
-        y: 5
-        width: 20
-        height: 39
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 84
+        y: 0
+        width: 48
+        height: 48
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -177,12 +177,12 @@ TextureImporter:
       name: Gate1-Animated-Gates-1_2
       rect:
         serializedVersion: 2
-        x: 108
-        y: 5
-        width: 20
-        height: 39
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 156
+        y: 0
+        width: 48
+        height: 48
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -199,12 +199,12 @@ TextureImporter:
       name: Gate1-Animated-Gates-1_3
       rect:
         serializedVersion: 2
-        x: 160
-        y: 5
-        width: 19
-        height: 39
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 228
+        y: 0
+        width: 48
+        height: 48
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -221,12 +221,12 @@ TextureImporter:
       name: Gate1-Animated-Gates-1_4
       rect:
         serializedVersion: 2
-        x: 181
-        y: 5
-        width: 19
-        height: 39
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 300
+        y: 0
+        width: 48
+        height: 48
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -243,12 +243,12 @@ TextureImporter:
       name: Gate1-Animated-Gates-1_5
       rect:
         serializedVersion: 2
-        x: 232
-        y: 5
-        width: 17
-        height: 39
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 372
+        y: 0
+        width: 48
+        height: 48
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -265,12 +265,12 @@ TextureImporter:
       name: Gate1-Animated-Gates-1_6
       rect:
         serializedVersion: 2
-        x: 255
-        y: 5
-        width: 17
-        height: 39
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 444
+        y: 0
+        width: 48
+        height: 48
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -287,12 +287,12 @@ TextureImporter:
       name: Gate1-Animated-Gates-1_7
       rect:
         serializedVersion: 2
-        x: 304
-        y: 5
-        width: 13
-        height: 37
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 516
+        y: 0
+        width: 48
+        height: 48
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -309,12 +309,12 @@ TextureImporter:
       name: Gate1-Animated-Gates-1_8
       rect:
         serializedVersion: 2
-        x: 330
-        y: 5
-        width: 14
-        height: 38
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 588
+        y: 0
+        width: 48
+        height: 48
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -331,12 +331,12 @@ TextureImporter:
       name: Gate1-Animated-Gates-1_9
       rect:
         serializedVersion: 2
-        x: 376
-        y: 5
-        width: 11
-        height: 36
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 660
+        y: 0
+        width: 48
+        height: 48
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -349,33 +349,11 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
-    - serializedVersion: 2
-      name: Gate1-Animated-Gates-1_10
-      rect:
-        serializedVersion: 2
-        x: 405
-        y: 5
-        width: 299
-        height: 36
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: e00a055e6b1038900800000000000000
-      internalID: 685393453333389326
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 08b46a68c5dc52243a565846b019c415
     internalID: 0
     vertices: []
     indices: 
@@ -383,11 +361,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":48.0,"y":48.0},"gridSpriteOffset":{"x":12.0,"y":24.0},"gridSpritePadding":{"x":24.0,"y":0.0},"pivot":{"x":0.5,"y":0.25},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":9,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
       Gate1-Animated-Gates-1_0: 5386781578774596892
       Gate1-Animated-Gates-1_1: -3379999986964201931
-      Gate1-Animated-Gates-1_10: 685393453333389326
       Gate1-Animated-Gates-1_2: 984705486858770130
       Gate1-Animated-Gates-1_3: -4303953538988589402
       Gate1-Animated-Gates-1_4: -5207350681191752716
