@@ -127,12 +127,12 @@ TextureImporter:
       name: Door-Close-Left-Vertical_0
       rect:
         serializedVersion: 2
-        x: 1
+        x: 0
         y: 0
         width: 48
-        height: 44
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        height: 96
+      alignment: 9
+      pivot: {x: 0.25, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -146,37 +146,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Door-Close-Left-Vertical_1
-      rect:
-        serializedVersion: 2
-        x: 23
-        y: 44
-        width: 26
-        height: 41
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 73dcae5caebb4ce70800000000000000
-      internalID: 9134632561231449399
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: Door-Close-Left-Vertical_2
       rect:
         serializedVersion: 2
-        x: 55
+        x: 96
         y: 0
-        width: 42
-        height: 85
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 48
+        height: 96
+      alignment: 9
+      pivot: {x: 0.25, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -193,12 +171,12 @@ TextureImporter:
       name: Door-Close-Left-Vertical_3
       rect:
         serializedVersion: 2
-        x: 108
+        x: 144
         y: 0
-        width: 37
-        height: 85
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 48
+        height: 96
+      alignment: 9
+      pivot: {x: 0.25, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -215,12 +193,12 @@ TextureImporter:
       name: Door-Close-Left-Vertical_4
       rect:
         serializedVersion: 2
-        x: 165
+        x: 192
         y: 0
-        width: 28
-        height: 85
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 48
+        height: 96
+      alignment: 9
+      pivot: {x: 0.25, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -237,12 +215,12 @@ TextureImporter:
       name: Door-Close-Left-Vertical_5
       rect:
         serializedVersion: 2
-        x: 215
+        x: 240
         y: 0
-        width: 26
-        height: 85
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 48
+        height: 96
+      alignment: 9
+      pivot: {x: 0.25, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -259,12 +237,12 @@ TextureImporter:
       name: Door-Close-Left-Vertical_6
       rect:
         serializedVersion: 2
-        x: 263
+        x: 288
         y: 0
-        width: 26
-        height: 85
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 48
+        height: 96
+      alignment: 9
+      pivot: {x: 0.25, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -281,12 +259,12 @@ TextureImporter:
       name: Door-Close-Left-Vertical_7
       rect:
         serializedVersion: 2
-        x: 311
+        x: 336
         y: 0
-        width: 26
-        height: 85
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 48
+        height: 96
+      alignment: 9
+      pivot: {x: 0.25, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -300,23 +278,23 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Door-Close-Left-Vertical_8
+      name: Door-Close-Left-Vertical_1
       rect:
         serializedVersion: 2
-        x: 359
+        x: 48
         y: 0
-        width: 25
-        height: 85
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 48
+        height: 96
+      alignment: 9
+      pivot: {x: 0.25, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: f8072a7bb21ea3670800000000000000
-      internalID: 8519369223005433999
+      spriteID: 50cf88b66a5019848b84801d710cfa7f
+      internalID: 9134632561231449399
       vertices: []
       indices: 
       edges: []
@@ -325,7 +303,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 2b63ab875b4283044a2bd510b9644b2e
     internalID: 0
     vertices: []
     indices: 
@@ -333,7 +311,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":48.0,"y":96.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.25,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":9,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
       Door-Close-Left-Vertical_0: 4510620300303205795
       Door-Close-Left-Vertical_1: 9134632561231449399
@@ -343,7 +323,6 @@ TextureImporter:
       Door-Close-Left-Vertical_5: 5718894407972577525
       Door-Close-Left-Vertical_6: -1617779592748645923
       Door-Close-Left-Vertical_7: -1686426331817347290
-      Door-Close-Left-Vertical_8: 8519369223005433999
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
