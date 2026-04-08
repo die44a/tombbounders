@@ -2,8 +2,8 @@ using System.Collections.Generic;
 using _Project.Core.Main;
 using UnityEngine;
 using Zenject;
-// ReSharper disable All
 
+// ReSharper disable All
 namespace _Project.Core.Runtime.Core.Main
 {
     public class ListenerComposite : MonoBehaviour, 
