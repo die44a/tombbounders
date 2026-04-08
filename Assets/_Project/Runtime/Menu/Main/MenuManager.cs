@@ -16,10 +16,10 @@ namespace _Project.Runtime.Menu.Main
         public MenuState State { get; private set; }
         private readonly List<IMenuListener> _listeners = new();
         
-        public void AddListerner(IMenuListener listener)
+        public void AddListener(IMenuListener listener)
             => _listeners.Add(listener);
         
-        public void RemoveListerner(IMenuListener listener)
+        public void RemoveListener(IMenuListener listener)
             => _listeners.Remove(listener);
 
         public void StartGame()

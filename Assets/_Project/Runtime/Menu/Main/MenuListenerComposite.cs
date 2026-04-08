@@ -22,12 +22,12 @@ namespace _Project.Runtime.Menu.Main
         
         public void Awake()
         {
-            _menuManager.AddListerner(this);
+            _menuManager.AddListener(this);
         }
 
         public void OnDestroy()
         {
-            _menuManager.RemoveListerner(this);
+            _menuManager.RemoveListener(this);
         }
     }
 }
