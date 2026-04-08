@@ -25,9 +25,6 @@ namespace _Project.Services
 
         public void Initialize()
         {
-            // change if needed
-            LoadCoreScene();
-            Debug.Log("Scene Loaded");
         }
     }
 }
