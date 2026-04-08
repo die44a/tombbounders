@@ -6,7 +6,7 @@ using Zenject;
 
 // ReSharper disable Unity.PerformanceCriticalCodeInvocation
 
-namespace _Project.Core.Main
+namespace _Project.Runtime.Core.Main
 {
     public sealed class GameManager : IInitializable, IDisposable
     {

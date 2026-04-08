@@ -1,4 +1,4 @@
-namespace _Project.Core.Main
+namespace _Project.Runtime.Core.Main
 {
     public interface IGameTickable
     {

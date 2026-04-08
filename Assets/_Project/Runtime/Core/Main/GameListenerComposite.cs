@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using _Project.Core.Main;
+using _Project.Runtime.Core.Main;
 using UnityEngine;
 using Zenject;
 
