@@ -6,28 +6,44 @@ using Zenject;
 
 namespace _Project.Core.Runtime.Core.Main
 {
-    public class GameListenerComposite : MonoBehaviour, 
-        IPauseGameListener,
-        IResumeGameListener
+    public class ListenerComposite : MonoBehaviour, 
+        IGamePauseListener,
+        IGameResumeListener,
+        IGameStartListener,
+        IGameFinishListener
     {
         [Inject] 
         private GameManager _gameManager;
         
         [InjectLocal]
         private List<IGameListener> _listeners = new();
-
-        void IPauseGameListener.OnPauseGame()
+        
+        void IGameStartListener.OnStartGame()
         {
             foreach (var listener in _listeners)
-                if (listener is IPauseGameListener startGameListener)
-                    startGameListener.OnPauseGame();
+                if (listener is IGameStartListener startGameListener)
+                    startGameListener.OnStartGame();
         }
-
-        void IResumeGameListener.OnResumeGame()
+        
+        void IGameFinishListener.OnFinishGame()
         {
             foreach (var listener in _listeners)
-                if (listener is IResumeGameListener  startGameListener)
-                    startGameListener.OnResumeGame();
+                if (listener is IGameFinishListener gameFinishListener)
+                    gameFinishListener.OnFinishGame();
+        }
+        
+        void IGamePauseListener.OnPauseGame()
+        {
+            foreach (var listener in _listeners)
+                if (listener is IGamePauseListener gamePauseListener)
+                    gamePauseListener.OnPauseGame();
+        }
+        
+        void IGameResumeListener.OnResumeGame()
+        {
+            foreach (var listener in _listeners)
+                if (listener is IGameResumeListener  gameResumeListener)
+                    gameResumeListener.OnResumeGame();
         }
         
         public void Awake()

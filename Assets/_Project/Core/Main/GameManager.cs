@@ -30,7 +30,7 @@ namespace _Project.Core.Main
             State = GameState.PAUSED;
             
             foreach (var listener in _listeners)
-                if (listener is IPauseGameListener  startGameListener)
+                if (listener is IGamePauseListener  startGameListener)
                     startGameListener.OnPauseGame();
             
             OnPauseGame?.Invoke();
@@ -46,7 +46,7 @@ namespace _Project.Core.Main
             State = GameState.PLAY;
             
             foreach (var listener in _listeners)
-                if (listener is IResumeGameListener resumeGameListener)
+                if (listener is IGameResumeListener resumeGameListener)
                     resumeGameListener.OnResumeGame();
             
             OnResumeGame?.Invoke();

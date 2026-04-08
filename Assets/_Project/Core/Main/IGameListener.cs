@@ -4,22 +4,22 @@ namespace _Project.Core.Runtime.Core.Main
     {
     }
 
-    public interface IPauseStartListener : IGameListener
+    public interface IGameStartListener : IGameListener
     {
         void OnStartGame();
     }
     
-    public interface IFinishGameListener : IGameListener
+    public interface IGameFinishListener : IGameListener
     {
         void OnFinishGame();
     }
     
-    public interface IPauseGameListener : IGameListener
+    public interface IGamePauseListener : IGameListener
     {
         void OnPauseGame();
     }
 
-    public interface IResumeGameListener : IGameListener
+    public interface IGameResumeListener : IGameListener
     {
         void OnResumeGame();
     }
