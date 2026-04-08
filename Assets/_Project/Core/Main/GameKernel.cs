@@ -26,7 +26,7 @@ namespace _Project.Core.Main
             if (_gameManager.State != GameState.PLAY)
                 return;
             
-            var deltaTime = Time.fixedDeltaTime;
+            var deltaTime = Time.deltaTime;
             foreach (var tickable in _tiсkables)
             {
                 tickable.Tick(deltaTime);
@@ -54,10 +54,10 @@ namespace _Project.Core.Main
             if  (_gameManager.State != GameState.PLAY)
                 return;
             
-            var deltaTime = Time.deltaTime;
+            var fixedDeltaTime = Time.fixedDeltaTime;
             foreach (var tickable in _fixedTickables)
             {
-                tickable.FixedTick(deltaTime);
+                tickable.FixedTick(fixedDeltaTime);
             }
         }
     }
