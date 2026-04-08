@@ -9,7 +9,9 @@ namespace _Project.Global
         // ReSharper disable Unity.PerformanceAnalysis
         public override void InstallBindings()
         {
-            Container.BindInterfacesAndSelfTo<SceneLoaderService>().AsSingle().NonLazy();
+            Container.BindInterfacesAndSelfTo<SceneLoaderService>()
+                .AsSingle()
+                .NonLazy();
         }
     }
 }
