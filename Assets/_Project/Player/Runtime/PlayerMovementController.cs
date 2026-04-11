@@ -1,8 +1,10 @@
+using _Project.Services;
+using _Project.Services.Input;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Zenject;
 
-namespace TombBounders.Player
+namespace _Project.Player.Runtime
 {
     /// <summary>
     /// Движение по плоскости XZ: W/S — вперёд/назад по Z, A/D — влево/вправо по X; диагонали нормализуются.
@@ -11,42 +13,27 @@ namespace TombBounders.Player
     [RequireComponent(typeof(CharacterController))]
     public class PlayerMovementController : MonoBehaviour
     {
-        private const string GameplayMapName = "Gameplay";
-        private const string MoveActionName = "Move";
+        [SerializeField] private float moveSpeed = 6f;
+        [SerializeField] private float gravityMultiplier = 1f;
 
-        [SerializeField] private CharacterController _characterController;
-        [SerializeField] private float _moveSpeed = 6f;
-        [SerializeField] private float _gravityMultiplier = 1f;
-
+        private CharacterController _characterController;
         private IInputService _input;
         private InputAction _moveAction;
         private Vector2 _move;
         private float _verticalVelocity;
         private bool _moveSubscribed;
-
-        private void Reset()
-        {
-            _characterController = GetComponent<CharacterController>();
-        }
-
+        
         [Inject]
         public void Construct(IInputService input)
         {
             _input = input;
         }
 
-        /// <summary>Подписка на ввод (без дублей). Можно вызывать из IInitializable.Initialize вместо Start.</summary>
-        public void Initialize()
-        {
-            TrySubscribeMove();
-        }
-
         private void Start()
         {
-            if (_characterController == null)
-                _characterController = GetComponent<CharacterController>();
-
             TrySubscribeMove();
+            
+            _characterController = GetComponent<CharacterController>();
         }
 
         private void TrySubscribeMove()
@@ -56,20 +43,19 @@ namespace TombBounders.Player
 
             if (_input == null)
             {
-                Debug.LogError("[PlayerMovementController] IInputService не внедрён (ZenAutoInjecter / контекст).");
+                Debug.LogError($"[PlayerMovementController] IInputService не внедрён");
                 return;
             }
 
-            _moveAction = _input.GetAction(GameplayMapName, MoveActionName);
+            _moveAction = _input.GetAction(InputMaps.Gameplay, PlayerActions.Move);
             if (_moveAction == null)
             {
-                Debug.LogError("[PlayerMovementController] Не найдено действие Gameplay/Move.");
+                Debug.LogError($"[PlayerMovementController] Не найдено действие {InputMaps.Gameplay}/{PlayerActions.Move}");
                 return;
             }
 
             _moveAction.performed += OnMove;
             _moveAction.canceled += OnMove;
-            _moveSubscribed = true;
         }
 
         private void OnMove(InputAction.CallbackContext ctx)
@@ -77,38 +63,20 @@ namespace TombBounders.Player
             _move = ctx.ReadValue<Vector2>();
         }
 
-        public void Dispose()
-        {
-            if (!_moveSubscribed || _moveAction == null)
-                return;
-
-            _moveAction.performed -= OnMove;
-            _moveAction.canceled -= OnMove;
-            _moveAction = null;
-            _moveSubscribed = false;
-        }
-
         private void OnDestroy()
         {
-            Dispose();
+            _moveAction.performed -= OnMove;
+            _moveAction.canceled -= OnMove;
         }
 
-        private void Update()
+        private void FixedUpdate()
         {
-            if (_characterController == null)
+            if (!_characterController)
                 return;
 
-            var horizontal = new Vector3(_move.x, 0f, _move.y);
-            if (horizontal.sqrMagnitude > 1f)
-                horizontal.Normalize();
+            var horizontal = new Vector3(_move.x, _move.y, 0f).normalized;
 
-            if (_characterController.isGrounded && _verticalVelocity < 0f)
-                _verticalVelocity = -2f;
-
-            _verticalVelocity += Physics.gravity.y * _gravityMultiplier * Time.deltaTime;
-
-            var delta = horizontal * (_moveSpeed * Time.deltaTime);
-            delta.y = _verticalVelocity * Time.deltaTime;
+            var delta = horizontal * (moveSpeed * Time.fixedDeltaTime);
             _characterController.Move(delta);
         }
     }
