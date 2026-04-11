@@ -578,6 +578,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5091888499314094028, guid: a8e631423c2a93b43b1bbf3e98fae6fd, type: 3}
+      propertyPath: m_DynamicOccludee
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5091888499314094028, guid: a8e631423c2a93b43b1bbf3e98fae6fd, type: 3}
+      propertyPath: m_LightProbeUsage
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8426123455008555181, guid: a8e631423c2a93b43b1bbf3e98fae6fd, type: 3}
       propertyPath: m_Name
       value: Door-Left-Vertical
@@ -732,7 +740,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1867271894370867594, guid: ae03c57ee29556d4fa9237ac7efd913d, type: 3}
   m_PrefabInstance: {fileID: 8108071897559266487}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &6745736450810127902
+--- !u!114 &3228953278290154854
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
