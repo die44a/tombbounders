@@ -10,7 +10,7 @@ namespace _Project.Player.Runtime
     /// Движение по плоскости XZ: W/S — вперёд/назад по Z, A/D — влево/вправо по X; диагонали нормализуются.
     /// Ввод через ваш <c>IInputService</c>; карта <c>Gameplay</c>, действие <c>Move</c> (Vector2).
     /// </summary>
-    [RequireComponent(typeof(CharacterController))]
+    [RequireComponent(typeof(CharacterController2D))]
     public class PlayerMovementController : MonoBehaviour
     {
         [SerializeField] private float moveSpeed = 6f;
