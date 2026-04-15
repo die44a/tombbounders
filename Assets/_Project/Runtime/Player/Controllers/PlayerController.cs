@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using _Project.Runtime.Core.Main;
 using _Project.Runtime.Player.Main;
 using _Project.Services;
 using _Project.Services.Input;
@@ -9,7 +10,7 @@ using Zenject;
 
 namespace _Project.Runtime.Player.Controllers
 {
-    public class PlayerController : MonoBehaviour
+    public class PlayerController : MonoBehaviour, IGameFixedTickable
     {
         public PlayerState currentState;
         public event Action<PlayerState> OnStateChanged;
@@ -60,7 +61,7 @@ namespace _Project.Runtime.Player.Controllers
             }
         }
 
-        private void Update()
+        public void FixedTick(float fixedDeltaTime)
         {
             _moveInput = _moveAction.ReadValue<Vector2>();
 
