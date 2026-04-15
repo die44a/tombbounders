@@ -6,7 +6,7 @@ namespace _Project.Runtime.Player.Controllers
     public class PlayerMovementController : MonoBehaviour
     {
         [SerializeField] private float moveSpeed = 6f;
-        [SerializeField] private float dashForce = 20f;
+        [SerializeField] private float dashForce = 12f;
 
         private Rigidbody2D _rb;
 
