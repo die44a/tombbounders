@@ -20,6 +20,8 @@ namespace _Project.Runtime.Player.Controllers
         
         [Inject] private IInputService _inputService;
 
+        public Vector2 MoveInput => _moveInput;
+        
         private InputAction _moveAction;
         private InputAction _dashAction;
         private InputAction _interactAction;

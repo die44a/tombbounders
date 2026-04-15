@@ -5,6 +5,7 @@ namespace _Project.Runtime.Player.Main
         Idle,
         Walking,
         Dashing,
-        Interacting
+        Interacting,
+        Dead
     }
 }

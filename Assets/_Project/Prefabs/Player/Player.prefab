@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: -6718136993913382119}
   - component: {fileID: 8992285698937320613}
   - component: {fileID: -6113002115403245713}
+  - component: {fileID: 285267417064515586}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -209,3 +210,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::_Project.Player.Runtime.PlayerMovementController
   moveSpeed: 6
   dashForce: 20
+--- !u!114 &285267417064515586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2373793466803568562}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e62aaa90c2c9a294bae7f386f66bbe0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_Project.Runtime.Player.Controllers.PlayerAnimationController
