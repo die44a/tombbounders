@@ -78,7 +78,6 @@ namespace _Project.Runtime.Core.Main
 
         void IDisposable.Dispose()
         {
-            _cameraPivot.Detach();
         }
     }
 }

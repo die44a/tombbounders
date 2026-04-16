@@ -18,7 +18,7 @@ namespace _Project.Runtime.Player.Installers
                 .NonLazy();
 
             Container.BindInterfacesAndSelfTo<PlayerAnimationController>()
-                .FromComponentInNewPrefab(playerPrefab)
+                .FromComponentInHierarchy(playerPrefab)
                 .AsSingle();
             
             Debug.Log("Player installed");

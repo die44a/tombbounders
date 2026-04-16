@@ -13,7 +13,7 @@ namespace _Project.Runtime.Core.Camera
 
             transform.SetParent(target.transform);
 
-            transform.localPosition = Vector3.zero;
+            transform.localPosition = new Vector3(0, 1, 0);
             transform.localRotation = Quaternion.identity;
         }
 
@@ -22,6 +22,7 @@ namespace _Project.Runtime.Core.Camera
         /// </summary>
         public void Detach()
         {
+            if (!this) return;
             transform.SetParent(null);
         }
     }
