@@ -10,8 +10,8 @@ namespace _Project.Runtime.Core.UI
         IGamePauseListener,
         IGameResumeListener
     {
-        [SerializeField] 
-        private Button resumeButton;
+        [SerializeField] private Button resumeButton;
+        [SerializeField] private Button exitToMenuButton; 
         
         private GameManager _gameManager;
 
@@ -21,31 +21,41 @@ namespace _Project.Runtime.Core.UI
             _gameManager = gameManager;
         }
 
+        void IInitializable.Initialize()
+        {
+            resumeButton.onClick.AddListener(OnResumeClicked);
+            exitToMenuButton.onClick.AddListener(OnExitClicked);
+            
+            Hide();
+        }
+
+        private void OnDestroy()
+        {
+            resumeButton.onClick.RemoveListener(OnResumeClicked);
+            exitToMenuButton.onClick.RemoveListener(OnExitClicked);
+        }
+
+        private void OnResumeClicked()
+        {
+            _gameManager.ResumeGame();
+        }
+
+        private void OnExitClicked()
+        {
+            _gameManager.ExitToMenu();
+        }
+
         private void Show()
         {
             gameObject.SetActive(true);
-            resumeButton.onClick.AddListener(_gameManager.ResumeGame);
         }
 
         private void Hide()
         {
             gameObject.SetActive(false);
-            resumeButton.onClick.RemoveListener(_gameManager.ResumeGame);
         }
 
-        void IGamePauseListener.OnPauseGame()
-        {
-            Show();
-        }
-        
-        void IGameResumeListener.OnResumeGame()
-        {
-            Hide();
-        }
-        
-        void IInitializable.Initialize()
-        {
-            Hide();
-        }
+        void IGamePauseListener.OnPauseGame() => Show();
+        void IGameResumeListener.OnResumeGame() => Hide();
     }
 }

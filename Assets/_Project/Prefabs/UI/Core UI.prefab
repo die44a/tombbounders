@@ -91,6 +91,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Project.Runtime.Core.UI.PauseScreen
   resumeButton: {fileID: 6648419769017476397}
+  exitToMenuButton: {fileID: 7893110932797172669}
 --- !u!1 &2190223448326233684
 GameObject:
   m_ObjectHideFlags: 0

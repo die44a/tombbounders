@@ -17,6 +17,7 @@ namespace _Project.Runtime.Core.Main
         [Inject] private IInputService _inputService;
         [Inject] private CameraPivotController _cameraPivot;
         [Inject] private PlayerController _player;
+        [Inject] private SceneLoaderService _sceneLoader;
         
         public GameState State { get; private set; }
         private readonly List<IGameListener> _listeners = new();
@@ -55,6 +56,15 @@ namespace _Project.Runtime.Core.Main
                     resumeGameListener.OnResumeGame();
             
             Debug.Log($"Game Resumed: {State}");
+        }
+
+        public void ExitToMenu()
+        {
+            Time.timeScale = 1f;
+            _inputService.SwitchToUI();
+            
+            Debug.Log("Exiting to Menu via SceneLoaderService");
+            _sceneLoader.LoadMenuScene(); 
         }
 
         private void TogglePause(InputAction.CallbackContext context)
