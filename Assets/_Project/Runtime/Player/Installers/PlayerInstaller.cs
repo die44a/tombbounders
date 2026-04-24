@@ -1,5 +1,6 @@
 using _Project.Runtime.Core.Main;
 using _Project.Runtime.Player.Controllers;
+using _Project.Runtime.Player.Main;
 using UnityEngine;
 using Zenject;
 
@@ -19,6 +20,11 @@ namespace _Project.Runtime.Player.Installers
 
             Container.BindInterfacesAndSelfTo<PlayerAnimationController>()
                 .FromComponentInHierarchy(playerPrefab)
+                .AsSingle();
+            
+            Container.Bind<IHealthObservable>()
+                .To<HealthTimeController>()
+                .FromComponentInHierarchy()
                 .AsSingle();
             
             Debug.Log("Player installed");
