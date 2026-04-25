@@ -10,5 +10,6 @@ namespace _Project.Services.Input
     {
         public const string Move = "Move";
         public const string Jump = "Jump";
+        public const string Interact = "Interact";
     }
 }

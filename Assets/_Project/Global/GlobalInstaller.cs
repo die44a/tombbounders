@@ -24,6 +24,10 @@ namespace _Project.Global
                 .AsSingle()
                 .WithArguments(inputActions)
                 .NonLazy();
+
+            Container.BindInterfacesTo<InteractionSetupService>()
+                .AsSingle()
+                .NonLazy();
         }
 
 #if UNITY_EDITOR
