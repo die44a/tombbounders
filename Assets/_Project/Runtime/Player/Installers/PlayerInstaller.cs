@@ -26,7 +26,7 @@ namespace _Project.Runtime.Player.Installers
                 .FromComponentInHierarchy()
                 .AsSingle();
             
-            Container.BindInterfacesTo<IDashProvider>()
+            Container.BindInterfacesTo<PlayerMovementController>()
                 .FromComponentInHierarchy()
                 .AsSingle();
             
