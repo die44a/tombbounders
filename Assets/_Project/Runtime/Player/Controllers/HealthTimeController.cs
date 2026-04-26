@@ -1,21 +1,28 @@
 using System;
+using System.Collections;
 using UnityEngine;
+using Zenject;
 
 namespace _Project.Runtime.Player.Controllers
 {
     public class HealthTimeController : MonoBehaviour, IHealthObservable, IDamageable
     {
+        [Inject] private IPlayerStatus _playerStatus;
+        
         [SerializeField] private float maxHealthTime = 60f; 
+        [SerializeField] private float invulnerabilityDuration = 0.7f;
         
         private float _currentHealthTime;
         private float _timeModifier;
-    
+        private bool _isInvulnerable = false;
+        private bool _isDead = false;
+        
         public event Action<float> OnHealthChanged; 
         public event Action OnDeath;
-
-        private bool _isDead = false;
+        public event Action OnHit; 
 
         public float CurrentHealth => _currentHealthTime;
+        public float InvulnerabilityDuration => invulnerabilityDuration;
 
         private void Start()
         {
@@ -32,10 +39,23 @@ namespace _Project.Runtime.Player.Controllers
 
         public void ApplyDamage(float amount)
         {
-            if (_isDead) return;
-        
-            Debug.Log($"Причинен урон: {amount}");
-            ReduceHealth(amount);
+            if (_isDead || _isInvulnerable || _playerStatus.IsInvulnerableState) return;
+            
+            _currentHealthTime = Mathf.Max(_currentHealthTime - amount, 0);
+            OnHealthChanged?.Invoke(_currentHealthTime);
+            OnHit?.Invoke(); 
+
+            if (_currentHealthTime <= 0)
+                Die();
+            else
+                StartCoroutine(InvulnerabilityRoutine());
+        }
+
+        private IEnumerator InvulnerabilityRoutine()
+        {
+            _isInvulnerable = true;
+            yield return new WaitForSeconds(invulnerabilityDuration);
+            _isInvulnerable = false;
         }
 
         private void ReduceHealth(float amount)
