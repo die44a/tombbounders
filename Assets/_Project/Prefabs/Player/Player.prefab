@@ -226,7 +226,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::_Project.Runtime.Player.Controllers.PlayerAnimationController
   spriteRenderer: {fileID: 727867455613080140}
   blinkInterval: 0.1
-  invulnerabilityDuration: 0.7
 --- !u!114 &-1867228688589405625
 MonoBehaviour:
   m_ObjectHideFlags: 0

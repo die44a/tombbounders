@@ -1,11 +1,14 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using Zenject;
 
 namespace _Project.Runtime.Player.Controllers
 {
     public class HealthTimeController : MonoBehaviour, IHealthObservable, IDamageable
     {
+        [Inject] private IPlayerStatus _playerStatus;
+        
         [SerializeField] private float maxHealthTime = 60f; 
         [SerializeField] private float invulnerabilityDuration = 0.7f;
         
@@ -36,7 +39,7 @@ namespace _Project.Runtime.Player.Controllers
 
         public void ApplyDamage(float amount)
         {
-            if (_isDead || _isInvulnerable) return;
+            if (_isDead || _isInvulnerable || _playerStatus.IsInvulnerableState) return;
             
             _currentHealthTime = Mathf.Max(_currentHealthTime - amount, 0);
             OnHealthChanged?.Invoke(_currentHealthTime);

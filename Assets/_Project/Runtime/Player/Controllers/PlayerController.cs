@@ -11,7 +11,8 @@ using Zenject;
 namespace _Project.Runtime.Player.Controllers
 {
     public class PlayerController : 
-        MonoBehaviour
+        MonoBehaviour,
+        IPlayerStatus
     {
         public PlayerState currentState;
         public event Action<PlayerState> OnStateChanged;
@@ -22,6 +23,7 @@ namespace _Project.Runtime.Player.Controllers
         [Inject] private IInputService _inputService;
 
         public Vector2 MoveInput => _moveInput;
+        public bool IsInvulnerableState => currentState == PlayerState.Dashing;
         
         private InputAction _moveAction;
         private InputAction _dashAction;
@@ -59,9 +61,7 @@ namespace _Project.Runtime.Player.Controllers
         private void OnInteractPerformed(InputAction.CallbackContext context)
         {
             if (currentState is PlayerState.Idle or PlayerState.Walking)
-            {
                 SetState(PlayerState.Interacting);
-            }
         }
 
         public void FixedUpdate()
@@ -93,7 +93,7 @@ namespace _Project.Runtime.Player.Controllers
             _movementController.Dash(_moveInput); 
 
             yield return new WaitForSeconds(0.2f); 
-
+            
             UpdateMoveState();
         }
 
