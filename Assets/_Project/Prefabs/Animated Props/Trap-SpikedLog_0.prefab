@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7371089507484192136}
   - component: {fileID: 4619380781992372668}
   - component: {fileID: 8292563621121359960}
-  - component: {fileID: 1203197921057204929}
+  - component: {fileID: 5508023377386929248}
   m_Layer: 8
   m_Name: Trap-SpikedLog_0
   m_TagString: Untagged
@@ -132,8 +132,8 @@ MonoBehaviour:
   knockbackForce: 4
   knockbackDuration: 0.2
   applyKnockback: 1
---- !u!70 &1203197921057204929
-CapsuleCollider2D:
+--- !u!61 &5508023377386929248
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -167,5 +167,14 @@ CapsuleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.45833334, y: 1.09}
-  m_Direction: 0
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.45833334, y: 0.9583333}
+    newSize: {x: 0.45833334, y: 0.9583333}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 0.35, y: 0.91}
+  m_EdgeRadius: 0
