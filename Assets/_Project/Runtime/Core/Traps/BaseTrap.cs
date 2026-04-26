@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Experimental.GlobalIllumination;
 
 namespace _Project.Runtime.Core.Traps
 {
@@ -24,6 +25,9 @@ namespace _Project.Runtime.Core.Traps
 
         protected void DealDamageToAll()
         { 
+            if (TargetsInRange.Count <= 0)
+                return;
+            
             foreach (var target in TargetsInRange)
                 target.ApplyDamage(damageAmount);
         }
