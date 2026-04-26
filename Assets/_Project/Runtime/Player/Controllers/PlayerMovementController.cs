@@ -9,11 +9,16 @@ namespace _Project.Runtime.Player.Controllers
         [SerializeField] private float dashForce = 12f;
         [SerializeField] private float dashCooldown = 1.5f;
 
-        public float DashProgress => _timeElapsed / dashCooldown;
-        public bool IsDashReady => _timeElapsed >= dashCooldown;
+        public float DashProgress => dashCooldown > 0 ? Mathf.Clamp01(_timeElapsed / dashCooldown) : 1f;        
+        public bool IsDashReady => _timeElapsed >= dashCooldown ;
         
-        private float _timeElapsed = 1.5f;
-
+        private float _timeElapsed;
+        
+        private void Start()
+        {
+            _timeElapsed = dashCooldown;
+        }
+        
         private void Update()
         {
             if (_timeElapsed < dashCooldown) 
