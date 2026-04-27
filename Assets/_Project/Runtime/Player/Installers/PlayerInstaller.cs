@@ -26,8 +26,11 @@ namespace _Project.Runtime.Player.Installers
                 .FromComponentInHierarchy()
                 .AsSingle();
             
+            Container.BindInterfacesTo<PlayerMovementController>()
+                .FromComponentInHierarchy()
+                .AsSingle();
+            
             Debug.Log("Player installed");
-
         }
     }
 }
