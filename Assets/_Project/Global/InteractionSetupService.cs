@@ -1,6 +1,7 @@
 using System;
 using _Project.Player.Runtime;
 using _Project.Runtime.Core.Main.Interactables;
+using _Project.Runtime.Player.Controllers;
 using _Project.Runtime.UI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
