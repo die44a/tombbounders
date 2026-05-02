@@ -1,4 +1,5 @@
 using _Project.Services;
+using _Project.Services.Scenes;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Zenject;
@@ -8,8 +9,6 @@ namespace _Project.Global
     public class GlobalInstaller : MonoInstaller
     {
         [SerializeField] private InputActionAsset inputActions;
-        
-        // 1. Ссылка на префаб или объект SceneFader
         [SerializeField] private SceneFader fader;
 
         // ReSharper disable Unity.PerformanceAnalysis
@@ -23,7 +22,7 @@ namespace _Project.Global
 
     
             Container.Bind<SceneFader>()
-                .FromInstance(fader)
+                .FromComponentInNewPrefab(fader)
                 .AsSingle()
                 .NonLazy();
 

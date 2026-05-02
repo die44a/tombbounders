@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6660984718857863194}
   - component: {fileID: 8052631319078998667}
   - component: {fileID: 8672136497972418035}
+  - component: {fileID: 3995915089376889242}
   m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
@@ -102,6 +103,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!225 &3995915089376889242
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 412991693511425119}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &3876047842486995215
 GameObject:
   m_ObjectHideFlags: 0
@@ -113,7 +126,6 @@ GameObject:
   - component: {fileID: 3100371708436260486}
   - component: {fileID: 1713674546596184364}
   - component: {fileID: 3223406751686616027}
-  - component: {fileID: 8032875991451707105}
   m_Layer: 0
   m_Name: FadeOverlay
   m_TagString: Untagged
@@ -178,18 +190,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!225 &8032875991451707105
-CanvasGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3876047842486995215}
-  m_Enabled: 1
-  m_Alpha: 0
-  m_Interactable: 1
-  m_BlocksRaycasts: 0
-  m_IgnoreParentGroups: 0
 --- !u!1 &6155494287430469030
 GameObject:
   m_ObjectHideFlags: 0
@@ -235,5 +235,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b248e4324a94929b326e41d74dd62d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Project.Global.SceneFader
-  fadeCanvasGroup: {fileID: 8032875991451707105}
+  fadeCanvasGroup: {fileID: 3995915089376889242}
   defaultDuration: 0.5

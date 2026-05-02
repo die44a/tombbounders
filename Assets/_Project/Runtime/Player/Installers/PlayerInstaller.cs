@@ -28,7 +28,7 @@ namespace _Project.Runtime.Player.Installers
                 .FromComponentInHierarchy(playerPrefab)
                 .AsSingle();
             
-            Container.BindInterfacesTo<HealthTimeController>()
+            Container.BindInterfacesAndSelfTo<HealthTimeController>()
                 .FromComponentInHierarchy()
                 .AsSingle();
             

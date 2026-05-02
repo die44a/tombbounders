@@ -27,9 +27,8 @@ namespace _Project.Global
 
             while (elapsed < duration)
             {
-                elapsed += Time.deltaTime;
+                elapsed += Time.unscaledDeltaTime;
                 fadeCanvasGroup.alpha = Mathf.Lerp(startAlpha, endAlpha, elapsed / duration);
-                Debug.Log(fadeCanvasGroup.alpha);
                 await Task.Yield(); 
             }
 
