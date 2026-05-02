@@ -5,13 +5,13 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using Zenject;
 using System.Linq;
+using System.Collections;
+using _Project.Runtime.Player.Controllers;
 
 namespace _Project.Player.Runtime
 {
     public class PlayerInteractor : MonoBehaviour
     {
-        // private float distanceInteract;
-
         [Header("Настройки")]
         [SerializeField] private float _interactionRange = 100f;
         [SerializeField] private LayerMask _interactableLayer = 1 << 8; // Layer 8: Interactable
@@ -89,39 +89,9 @@ namespace _Project.Player.Runtime
                 }
             }
             
-            // Режим "Близкого поиска" (OverlapCircle)
-            // if (foundInteractable == null)
-            // {
-            //     Collider2D hit = Physics2D.OverlapCircle(transform.position, interactable.GetInteractionDistance(), _interactableLayer);
-            //     Debug.Log($"OEIJFOEFJOEJFOEIJF");
-
-            //     if (hit != null)
-            //     {
-            //         foundInteractable = hit.GetComponent<IInteractable>();
-            //         Debug.Log($"OEIJFOEFJOEJFOEIJF");
-
-            //     }
-            // }
+        
             if (foundInteractable == null)
             {   
-                                // var allInteractables = Object.FindObjectsByType<MonoBehaviour>(FindObjectsSortMode.None);
-                                // IInteractable closest = null;
-                                // float minDistance = float.MaxValue;
-
-                                // foreach (var mono in allInteractables)
-                                // {
-                                //     if (mono is IInteractable interactable)
-                                //     {
-                                //         var col = mono.GetComponentInChildren<Collider2D>();
-                                //         float dist = Vector2.Distance(transform.position, col.bounds.center);
-                                //         if (dist < minDistance && dist < interactable.GetInteractionDistance()) // Радиус 3 метров
-                                //         {
-                                //             minDistance = dist;
-                                //             closest = interactable;
-                                //             Debug.Log($"цщуращшцурапщцурацщшращшцрзыфовщцшораущцшрДоходит цикл сюда?");
-                                //         }
-                                //     }
-                                // }
                 IInteractable closest = FindClosestInteractable();
                 if (closest != null)
                 {
@@ -130,99 +100,64 @@ namespace _Project.Player.Runtime
                     _currentInteractable?.OnHoverExit(gameObject);
                     _currentInteractable = foundInteractable;
                     _currentInteractable?.OnHoverEnter(gameObject);
-                    // closest.Interact(gameObject); // закрывает дверь
                 }
             }
 
-            // if (foundInteractable != _currentInteractable)
-            // {
-            //     _currentInteractable?.OnHoverExit(gameObject);
-            //     _currentInteractable = foundInteractable;
-            //     _currentInteractable?.OnHoverEnter(gameObject);
-                
-            //     if (_currentInteractable != null)
-            //         Debug.Log($"4. [PlayerInteractor] Вижу объект: {((MonoBehaviour)_currentInteractable).name}"); // Этот основной
-            //         // просто вижу дверь
-                
-            // }
+        
             if (foundInteractable == null && _currentInteractable != null)
             {
                 _currentInteractable.OnHoverExit(gameObject);
                 _currentInteractable = null;
             }
         }
+        private PlayerController _playerController;
+
+        private void Awake()
+        {
+            _playerController = GetComponent<PlayerController>();
+        }
 
         private void OnInteractPerformed(InputAction.CallbackContext context)
         {
             Debug.Log("5. [PlayerInteractor] Сигнал Interact получен через Input System"); // Этот основной
-            PerformInteraction();
+            if (_playerController == null)
+                return;
+
+            if (!_playerController.CanInteract)
+                return;
+
+            if (_currentInteractable == null)
+                return;
+
+            StartCoroutine(PerformInteraction());
         }
 
-        private void PerformInteraction()
+        private IEnumerator PerformInteraction()
         {
+            _playerController.BeginInteract();
+            
             // 1. Взаимодействуем с тем, на что смотрим
             if (_currentInteractable != null)
             {
                 Debug.Log($"6.  [PlayerInteractor] Взаимодействую с целью: {((MonoBehaviour)_currentInteractable).name}"); // Этот основной
-                _currentInteractable.Interact(gameObject);  // открывает дверь
-                return;
+                _currentInteractable.Interact(gameObject); // открывает дверь
+                // return;
             }
 
-            // 2. Если никого не видим, ищем ТОЛЬКО БЛИЖАЙШЕГО в радиусе 3 метров
-                            // var allInteractables = Object.FindObjectsByType<MonoBehaviour>(FindObjectsSortMode.None);
-                            // IInteractable closest = null;
-                            // float minDistance = float.MaxValue;
-
-                            // foreach (var mono in allInteractables)
-                            // {
-                            //     if (mono is IInteractable interactable)
-                            //     {
-                            //         var col = mono.GetComponentInChildren<Collider2D>();
-                            //         float dist = Vector2.Distance(transform.position,col.bounds.center);
-                            //         if (dist < minDistance && dist < interactable.GetInteractionDistance()) // Радиус 3 метров
-                            //         {
-                            //             minDistance = dist;
-                            //             closest = interactable;
-                            //             Debug.Log($"222Доходит цикл сюда?");
-                            //         }
-                            //     }
-                            // }
             IInteractable closest = FindClosestInteractable();
             if (closest != null)
             {
-                // Debug.Log($"7. [PlayerInteractor] Взаимодействую с ближайшим объектом: {((MonoBehaviour)closest).name} (дистанция: {minDistance:F1})"); // Этот основной
                 closest.Interact(gameObject); // закрывает дверь
             }
             else
             {
                 Debug.LogWarning("8. [PlayerInteractor] Нажато E, но рядом нет ничего интерактивного."); // Этот основной
-                // не с чем взаимподействовать
             }
+            yield return new WaitForSeconds(0.0f);
+            _playerController.EndInteract();
         }
-                        // private IInteractable FindClosestInteractable()
-                        // {
-                        //     var allInteractables = Object.FindObjectsByType<MonoBehaviour>(FindObjectsSortMode.None);
-                        //     IInteractable closest = null;
-                        //     float minDistance = float.MaxValue;
-
-                        //     foreach (var mono in allInteractables)
-                        //     {
-                        //         if (mono is IInteractable interactable)
-                        //         {
-                        //             var col = mono.GetComponentInChildren<Collider2D>();
-                        //             float dist = Vector2.Distance(transform.position,col.bounds.center);
-                        //             if (dist < minDistance && dist < interactable.GetInteractionDistance()) // Радиус 3 метров
-                        //             {
-                        //                 minDistance = dist;
-                        //                 closest = interactable;
-                        //                 Debug.Log($"222Доходит цикл сюда?");
-                        //             }       
-                        //         }
-                        //     } 
-                        //     return closest;
-                        // }
+        
         [SerializeField] private float _maxSearchRadius = 10f;
-        // [SerializeField] private LayerMask _interactableLayer;
 
         private readonly Collider2D[] _results = new Collider2D[16];
 
@@ -260,5 +195,4 @@ namespace _Project.Player.Runtime
             return closest;
         }
      }
-    
 }

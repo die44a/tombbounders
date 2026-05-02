@@ -7,6 +7,8 @@ using _Project.Services.Input;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Zenject;
+using System.Collections;
+using _Project.Runtime.Player.Controllers;
 
 namespace _Project.Runtime.Player.Controllers
 {
@@ -41,13 +43,13 @@ namespace _Project.Runtime.Player.Controllers
             _interactAction = _inputService.GetAction(InputMaps.Gameplay, PlayerActions.Interact);
 
             _dashAction.performed += OnDashPerformed;
-            _interactAction.performed += OnInteractPerformed;
+            // _interactAction.performed += OnInteractPerformed;
         }
 
         private void OnDestroy()
         {
             _dashAction.performed -= OnDashPerformed;
-            _interactAction.performed -= OnInteractPerformed;
+            // _interactAction.performed -= OnInteractPerformed;
         }
 
         private void OnDashPerformed(InputAction.CallbackContext context)
@@ -58,10 +60,18 @@ namespace _Project.Runtime.Player.Controllers
             }
         }
 
-        private void OnInteractPerformed(InputAction.CallbackContext context)
+        public bool CanInteract => currentState is PlayerState.Idle or PlayerState.Walking;
+
+        public void BeginInteract()
         {
-            if (currentState is PlayerState.Idle or PlayerState.Walking)
-                SetState(PlayerState.Interacting);
+            if (!CanInteract) return;
+            SetState(PlayerState.Interacting);
+            _movementController.Stop();
+        }
+
+        public void EndInteract()
+        {
+            UpdateMoveState();
         }
 
         public void FixedUpdate()
