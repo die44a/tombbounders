@@ -8,6 +8,11 @@ namespace _Project.Global
         [SerializeField] private CanvasGroup fadeCanvasGroup;
         [SerializeField] private float defaultDuration = 0.5f;
 
+        private void Awake()
+        {
+            fadeCanvasGroup.blocksRaycasts = false;
+        }
+        
         public async Task FadeInAsync(float duration = -1f)
         {
             await DoFade(1f, 0f, duration > 0 ? duration : defaultDuration);
