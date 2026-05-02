@@ -59,7 +59,8 @@ namespace _Project.Runtime.Player.Controllers
         {
             if (CurrentState is PlayerState.Dashing 
                 or PlayerState.Interacting
-                or PlayerState.Dead)
+                or PlayerState.Dead
+                || !_movementController.IsDashReady)
                 return;
             
             StartCoroutine(PerformDash());
