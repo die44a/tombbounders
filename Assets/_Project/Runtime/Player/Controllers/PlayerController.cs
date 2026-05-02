@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using _Project.Player.Runtime;
 using _Project.Runtime.Core.Main;
 using _Project.Runtime.Player.Main;
 using _Project.Services;
@@ -7,12 +8,12 @@ using _Project.Services.Input;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Zenject;
-using System.Collections;
 using _Project.Runtime.Player.Controllers;
+using _Project.Runtime.Core.Main.Interfaces;
 
 namespace _Project.Runtime.Player.Controllers
 {
-    public class PlayerController : 
+    public class PlayerController :
         MonoBehaviour,
         IPlayerStatus
     {
@@ -21,18 +22,19 @@ namespace _Project.Runtime.Player.Controllers
 
         private PlayerMovementController _movementController;
         private Vector2 _moveInput;
-        
+
         [Inject] private IInputService _inputService;
 
         public Vector2 MoveInput => _moveInput;
         public bool IsInvulnerableState => currentState == PlayerState.Dashing;
-        
+
         private InputAction _moveAction;
         private InputAction _dashAction;
         private InputAction _interactAction;
 
         private void Awake()
         {
+            _playerInteractor = GetComponent<PlayerInteractor>();
             _movementController = GetComponent<PlayerMovementController>();
         }
 
@@ -86,10 +88,10 @@ namespace _Project.Runtime.Player.Controllers
 
         private void UpdateMoveState()
         {
-            var targetState = _moveInput.sqrMagnitude > 0.01f 
-                ? PlayerState.Walking 
+            var targetState = _moveInput.sqrMagnitude > 0.01f
+                ? PlayerState.Walking
                 : PlayerState.Idle;
-                
+
             SetState(targetState);
         }
 
@@ -97,13 +99,13 @@ namespace _Project.Runtime.Player.Controllers
         {
             if (_moveInput.magnitude < 0.01f)
                 yield break;
-            
-            SetState(PlayerState.Dashing);
-            
-            _movementController.Dash(_moveInput); 
 
-            yield return new WaitForSeconds(0.2f); 
-            
+            SetState(PlayerState.Dashing);
+
+            _movementController.Dash(_moveInput);
+
+            yield return new WaitForSeconds(0.2f);
+
             UpdateMoveState();
         }
 
@@ -113,5 +115,46 @@ namespace _Project.Runtime.Player.Controllers
             currentState = newState;
             OnStateChanged?.Invoke(currentState);
         }
+
+        public void TryInteract(IInteractable target)
+        {
+            if (target == null)
+                return;
+
+            if (!CanInteract)
+                return;
+
+            StartCoroutine(PerformInteractRoutine(target));
+        }
+
+        private IEnumerator PerformInteractRoutine(IInteractable target)
+        {
+            BeginInteract();
+
+            target.Interact(gameObject);
+
+            yield return new WaitForSeconds(0.3f);
+
+            EndInteract();
+        }
+
+        private void OnInteractPerformed(InputAction.CallbackContext context)
+        {
+            if (currentState == PlayerState.Dead)
+                return;
+
+            if (_playerInteractor == null)
+                return;
+
+            if (!CanInteract)
+                return;
+
+            IInteractable target = _playerInteractor.CurrentInteractable;
+            if (target == null)
+                return;
+
+            StartCoroutine(PerformInteractRoutine(target));
+        }
+        private PlayerInteractor _playerInteractor;
     }
 }
