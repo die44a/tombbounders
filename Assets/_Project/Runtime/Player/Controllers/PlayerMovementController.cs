@@ -36,5 +36,11 @@ namespace _Project.Runtime.Player.Controllers
             if (IsKnockedBack) return;
             Rb.linearVelocity = direction.normalized * dashForce;
         }
+        
+        public void ResetMovement()
+        {
+            Rb.linearVelocity = Vector3.zero;
+            Rb.angularVelocity = 0f;
+        }
     }
 }
