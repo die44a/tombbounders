@@ -15,11 +15,10 @@ namespace _Project.Runtime.Player.Services
             _cameraPivot = cameraPivot;
         }
 
+        // ReSharper disable Unity.PerformanceAnalysis
         public void Spawn(Vector3 position)
         {
             _player.ResetPlayer(position);
-            
-            _cameraPivot.transform.position = position;
             
             Physics2D.SyncTransforms();
 

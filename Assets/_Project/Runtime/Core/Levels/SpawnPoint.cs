@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace _Project.Runtime.Core.Maps
+namespace _Project.Runtime.Core.Levels
 {
     public class SpawnPoint : MonoBehaviour
     {
