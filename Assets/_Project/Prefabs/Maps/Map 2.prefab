@@ -3924,6 +3924,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1279630708831057354}
+  - component: {fileID: 3419727756608577370}
+  - component: {fileID: 2830536925745212078}
   m_Layer: 0
   m_Name: Player Exit Point
   m_TagString: Untagged
@@ -3946,6 +3948,54 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4897798094067630873}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &3419727756608577370
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5480997102537810973}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: -0.07}
+  m_Radius: 0.87
+--- !u!114 &2830536925745212078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5480997102537810973}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdb52fe21d094734db7a5ef9699f81a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_Project.Runtime.Core.Maps.ExitPoint
 --- !u!1 &5832870995587111289
 GameObject:
   m_ObjectHideFlags: 0
@@ -8868,6 +8918,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1686311380922645267}
+  - component: {fileID: 594698079213546655}
   m_Layer: 0
   m_Name: Player Spawn Point
   m_TagString: Untagged
@@ -8890,6 +8941,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4897798094067630873}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &594698079213546655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7804952679753872976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b5f635398f1bb84593b8a9d4ce882ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_Project.Runtime.Core.Maps.SpawnPoint
+  gizmoColor: {r: 0, g: 1, b: 0, a: 1}
 --- !u!1 &8445977187517494224
 GameObject:
   m_ObjectHideFlags: 0

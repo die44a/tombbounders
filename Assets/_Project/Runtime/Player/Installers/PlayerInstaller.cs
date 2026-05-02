@@ -2,6 +2,7 @@ using _Project.Runtime.Core.Configs;
 using _Project.Runtime.Core.Main;
 using _Project.Runtime.Player.Controllers;
 using _Project.Runtime.Player.Main;
+using _Project.Runtime.Player.Services;
 using UnityEngine;
 using Zenject;
 
@@ -27,7 +28,7 @@ namespace _Project.Runtime.Player.Installers
                 .FromComponentInHierarchy(playerPrefab)
                 .AsSingle();
             
-            Container.BindInterfacesTo<HealthTimeController>()
+            Container.BindInterfacesAndSelfTo<HealthTimeController>()
                 .FromComponentInHierarchy()
                 .AsSingle();
             
@@ -38,6 +39,9 @@ namespace _Project.Runtime.Player.Installers
             Container.BindInterfacesAndSelfTo<PlayerStats>()
                 .AsSingle()
                 .NonLazy();
+
+            Container.BindInterfacesAndSelfTo<PlayerSpawnService>()
+                .AsSingle();
             
             InstallConfigs();
             

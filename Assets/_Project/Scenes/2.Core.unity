@@ -227,7 +227,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 3.6944444
+  orthographic size: 3.9305556
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -616,10 +616,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2257527466545378039, guid: 8b67daa6e3239234786037f0f65b3a00, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3911871159465102055, guid: 8b67daa6e3239234786037f0f65b3a00, type: 3}
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 519420031}
+    - target: {fileID: 3911871159465102055, guid: 8b67daa6e3239234786037f0f65b3a00, type: 3}
+      propertyPath: m_RenderMode
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6223120418398515357, guid: 8b67daa6e3239234786037f0f65b3a00, type: 3}
       propertyPath: m_Name
       value: '[UI]'
@@ -729,6 +737,7 @@ GameObject:
   - component: {fileID: 1933836249}
   - component: {fileID: 1933836250}
   - component: {fileID: 1933836251}
+  - component: {fileID: 1933836252}
   m_Layer: 0
   m_Name: '[System]'
   m_TagString: Untagged
@@ -769,6 +778,7 @@ MonoBehaviour:
   - {fileID: 1933836249}
   - {fileID: 1933836250}
   - {fileID: 1933836251}
+  - {fileID: 1933836252}
   _installerPrefabs: []
   _autoRun: 1
   OnPreInstall:
@@ -864,6 +874,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::_Project.Runtime.Core.Installers.GameUIInstaller
   pauseScreen: {fileID: 1941762530}
   hudScreen: {fileID: 1170003532}
+--- !u!114 &1933836252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1933836241}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d2e1696130e432882d367252f2d92f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_Project.Runtime.Core.Levels.LevelsInstaller
+  levelPrefabs:
+  - {fileID: 3288486079241050544, guid: c4a51aa50df8b654b82999c51ddfc398, type: 3}
+  - {fileID: 3288486079241050544, guid: 696effe146eee01439258b0d4be74c7d, type: 3}
+  - {fileID: 3288486079241050544, guid: 51f2cad8ffab588438cde90413de628f, type: 3}
 --- !u!114 &1941762530 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2805115840673266542, guid: 8b67daa6e3239234786037f0f65b3a00, type: 3}
