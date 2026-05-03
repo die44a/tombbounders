@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 285267417064515586}
   - component: {fileID: -1867228688589405625}
   - component: {fileID: 125251029383181965}
+  - component: {fileID: 9058021629673717336}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -253,3 +254,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 614488d1954747945be2f3221f05fd25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Project.Runtime.Player.Controllers.PlayerWalletController
+--- !u!114 &9058021629673717336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2373793466803568562}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcb9154176fc4350b17ff05dac661724, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_Project.Runtime.Player.Controllers.PlayerInteractorController
+  interactDistance: 1.5
+  interactableLayer:
+    serializedVersion: 2
+    m_Bits: 16384
+  originOffset: {x: 0, y: 0.5}

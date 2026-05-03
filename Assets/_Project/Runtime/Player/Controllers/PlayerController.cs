@@ -14,26 +14,35 @@ namespace _Project.Runtime.Player.Controllers
         MonoBehaviour,
         IPlayerStatus
     {
-        [Inject] private IInputService _inputService;
-        [Inject] private IHealthObservable _healthObservable;
+        private IInputService _inputService;
+        private IHealthObservable _healthObservable;
+        private PlayerMovementController _movementController;
+        private PlayerInteractorController _interactorController;
         
         public PlayerState CurrentState { get; private set; }
+        public Vector2 MoveInput => _moveInput;
+        public Vector2 LastDirection { get; private set; }
+        public bool IsInvulnerableState => CurrentState == PlayerState.Dashing;
         
         public event Action<PlayerState> OnStateChanged;
 
-        private PlayerMovementController _movementController;
         private Vector2 _moveInput;
-        
-        public Vector2 MoveInput => _moveInput;
-        public bool IsInvulnerableState => CurrentState == PlayerState.Dashing;
         
         private InputAction _moveAction;
         private InputAction _dashAction;
         private InputAction _interactAction;
 
-        private void Awake()
+        [Inject]
+        private void Construct(
+            PlayerMovementController movementController,
+            IInputService inputService,
+            IHealthObservable healthObservable,
+            PlayerInteractorController interactorController)
         {
-            _movementController = GetComponent<PlayerMovementController>();
+            _movementController = movementController;
+            _inputService = inputService;
+            _healthObservable = healthObservable;
+            _interactorController = interactorController;
         }
 
         private void Start()
@@ -44,7 +53,6 @@ namespace _Project.Runtime.Player.Controllers
 
             _dashAction.performed += OnDashPerformed;
             _interactAction.performed += OnInteractPerformed;
-            
             _healthObservable.OnDeath += OnDeath;
         }
 
@@ -68,11 +76,15 @@ namespace _Project.Runtime.Player.Controllers
 
         private void OnInteractPerformed(InputAction.CallbackContext context)
         {
-            if (CurrentState is PlayerState.Dead)
+            if (CurrentState is PlayerState.Dead or PlayerState.Dashing)
                 return;
-            
-            if (CurrentState is PlayerState.Idle or PlayerState.Walking)
+
+            if (_interactorController.CanInteract()) 
+            {
                 SetState(PlayerState.Interacting);
+                
+                _interactorController.PerformInteraction();
+            }
         }
 
         public void FixedUpdate()
@@ -83,6 +95,10 @@ namespace _Project.Runtime.Player.Controllers
                 return;
 
             _moveInput = _moveAction.ReadValue<Vector2>();
+            
+            if (_moveInput.magnitude > 0.01f)
+                LastDirection = _moveInput;
+            
             UpdateMoveState();
             _movementController.ApplyMovement(_moveInput);
         }
@@ -143,6 +159,12 @@ namespace _Project.Runtime.Player.Controllers
             transform.position = spawnPosition;
 
             OnStateChanged?.Invoke(CurrentState);
+        }
+        
+        public void EndInteraction()
+        {
+            if (CurrentState == PlayerState.Interacting)
+                UpdateMoveState();
         }
     }
 }

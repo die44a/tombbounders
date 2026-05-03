@@ -19,8 +19,7 @@ namespace _Project.Global
             
             if (fader == null)
                 Debug.LogError("GlobalInstaller: SceneFader is not assigned.");
-
-    
+            
             Container.Bind<SceneFader>()
                 .FromComponentInNewPrefab(fader)
                 .AsSingle()

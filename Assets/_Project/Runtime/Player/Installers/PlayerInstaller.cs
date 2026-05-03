@@ -32,7 +32,7 @@ namespace _Project.Runtime.Player.Installers
                 .FromComponentInHierarchy()
                 .AsSingle();
             
-            Container.BindInterfacesTo<PlayerMovementController>()
+            Container.BindInterfacesAndSelfTo<PlayerMovementController>()
                 .FromComponentInHierarchy()
                 .AsSingle();
             
@@ -42,6 +42,11 @@ namespace _Project.Runtime.Player.Installers
 
             Container.BindInterfacesAndSelfTo<PlayerSpawnService>()
                 .AsSingle();
+            
+            Container.BindInterfacesAndSelfTo<PlayerInteractorController>()
+                .FromComponentInHierarchy()
+                .AsSingle()
+                .NonLazy();
             
             InstallConfigs();
             

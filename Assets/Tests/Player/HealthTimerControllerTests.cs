@@ -1,12 +1,17 @@
+using System;
 using _Project.Runtime.Player.Controllers;
 using _Project.Runtime.Player.Main;
 using NUnit.Framework;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace Tests.Player
 {
     public class PlayerStatusStub : IPlayerStatus {
         public bool IsInvulnerableState => false;
+        public Vector2 LastDirection { get; }
+        public event Action<PlayerState> OnStateChanged;
+        public PlayerState CurrentState { get; }
     }
     
     [TestFixture]
