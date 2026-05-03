@@ -43,6 +43,11 @@ namespace _Project.Runtime.Player.Installers
             Container.BindInterfacesAndSelfTo<PlayerSpawnService>()
                 .AsSingle();
             
+            Container.BindInterfacesAndSelfTo<PlayerInteractorController>()
+                .FromComponentInHierarchy()
+                .AsSingle()
+                .NonLazy();
+            
             InstallConfigs();
             
             Debug.Log("Player installed");
