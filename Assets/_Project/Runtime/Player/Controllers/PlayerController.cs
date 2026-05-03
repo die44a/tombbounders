@@ -8,8 +8,6 @@ using _Project.Services.Input;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Zenject;
-using _Project.Runtime.Player.Controllers;
-using _Project.Runtime.Core.Main.Interfaces;
 
 namespace _Project.Runtime.Player.Controllers
 {
@@ -31,11 +29,13 @@ namespace _Project.Runtime.Player.Controllers
         private InputAction _moveAction;
         private InputAction _dashAction;
         private InputAction _interactAction;
+        private PlayerInteractor _playerInteractor;
 
         private void Awake()
         {
-            _playerInteractor = GetComponent<PlayerInteractor>();
             _movementController = GetComponent<PlayerMovementController>();
+            _playerInteractor = GetComponentInChildren<PlayerInteractor>();
+            Debug.Log(_playerInteractor == null ? "Interactor is NULL" : "Interactor OK");
         }
 
         private void Start()
@@ -45,13 +45,13 @@ namespace _Project.Runtime.Player.Controllers
             _interactAction = _inputService.GetAction(InputMaps.Gameplay, PlayerActions.Interact);
 
             _dashAction.performed += OnDashPerformed;
-            // _interactAction.performed += OnInteractPerformed;
+            _interactAction.performed += OnInteractPerformed;
         }
 
         private void OnDestroy()
         {
             _dashAction.performed -= OnDashPerformed;
-            // _interactAction.performed -= OnInteractPerformed;
+            _interactAction.performed -= OnInteractPerformed;
         }
 
         private void OnDashPerformed(InputAction.CallbackContext context)
@@ -62,17 +62,21 @@ namespace _Project.Runtime.Player.Controllers
             }
         }
 
-        public bool CanInteract => currentState is PlayerState.Idle or PlayerState.Walking;
 
-        public void BeginInteract()
+        private void OnInteractPerformed(InputAction.CallbackContext context)
         {
-            if (!CanInteract) return;
-            SetState(PlayerState.Interacting);
-            _movementController.Stop();
+            Debug.Log("InteractPerformed");
+            if (currentState is PlayerState.Idle or PlayerState.Walking)
+            {
+                SetState(PlayerState.Interacting);
+                StartCoroutine(PerformIteraction());
+            }
         }
 
-        public void EndInteract()
+        private IEnumerator PerformIteraction()
         {
+            _playerInteractor.PerformInteraction();
+            yield return new WaitForSeconds(0.0f);
             UpdateMoveState();
         }
 
@@ -115,46 +119,5 @@ namespace _Project.Runtime.Player.Controllers
             currentState = newState;
             OnStateChanged?.Invoke(currentState);
         }
-
-        public void TryInteract(IInteractable target)
-        {
-            if (target == null)
-                return;
-
-            if (!CanInteract)
-                return;
-
-            StartCoroutine(PerformInteractRoutine(target));
-        }
-
-        private IEnumerator PerformInteractRoutine(IInteractable target)
-        {
-            BeginInteract();
-
-            target.Interact(gameObject);
-
-            yield return new WaitForSeconds(0.3f);
-
-            EndInteract();
-        }
-
-        private void OnInteractPerformed(InputAction.CallbackContext context)
-        {
-            if (currentState == PlayerState.Dead)
-                return;
-
-            if (_playerInteractor == null)
-                return;
-
-            if (!CanInteract)
-                return;
-
-            IInteractable target = _playerInteractor.CurrentInteractable;
-            if (target == null)
-                return;
-
-            StartCoroutine(PerformInteractRoutine(target));
-        }
-        private PlayerInteractor _playerInteractor;
     }
 }

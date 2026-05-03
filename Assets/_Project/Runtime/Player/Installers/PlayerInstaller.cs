@@ -1,3 +1,4 @@
+using _Project.Player.Runtime;
 using _Project.Runtime.Core.Configs;
 using _Project.Runtime.Core.Main;
 using _Project.Runtime.Player.Controllers;
@@ -38,6 +39,10 @@ namespace _Project.Runtime.Player.Installers
             Container.BindInterfacesAndSelfTo<PlayerStats>()
                 .AsSingle()
                 .NonLazy();
+            
+            Container.BindInterfacesAndSelfTo<PlayerInteractor>()
+                .FromComponentInHierarchy()
+                .AsSingle();
             
             InstallConfigs();
             

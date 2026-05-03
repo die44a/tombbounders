@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 285267417064515586}
   - component: {fileID: -1867228688589405625}
   - component: {fileID: 125251029383181965}
+  - component: {fileID: 4983059929379696541}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -87,7 +88,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 4
+  m_SortingOrder: 3500
   m_MaskInteraction: 0
   m_Sprite: {fileID: 8650177600460720533, guid: bd962ac63c64ecd4a9bf9522727f0844, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -254,3 +255,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 614488d1954747945be2f3221f05fd25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Project.Runtime.Player.Controllers.PlayerWalletController
+--- !u!114 &4983059929379696541
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2373793466803568562}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f20ae53cbef1e6b4fa63e91934b77265, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_Project.Player.Runtime.PlayerInteractor
+  _interactionRange: 100
+  _interactableLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  _camera: {fileID: 0}
+  _maxSearchRadius: 10
