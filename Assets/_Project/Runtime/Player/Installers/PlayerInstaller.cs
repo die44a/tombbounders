@@ -32,7 +32,7 @@ namespace _Project.Runtime.Player.Installers
                 .FromComponentInHierarchy()
                 .AsSingle();
             
-            Container.BindInterfacesTo<PlayerMovementController>()
+            Container.BindInterfacesAndSelfTo<PlayerMovementController>()
                 .FromComponentInHierarchy()
                 .AsSingle();
             
