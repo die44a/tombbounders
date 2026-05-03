@@ -17,6 +17,7 @@ namespace _Project.Runtime.Player.Controllers
         private IInputService _inputService;
         private IHealthObservable _healthObservable;
         private PlayerMovementController _movementController;
+        private PlayerInteractorController _interactorController;
         
         public PlayerState CurrentState { get; private set; }
         public Vector2 MoveInput => _moveInput;
@@ -35,11 +36,13 @@ namespace _Project.Runtime.Player.Controllers
         private void Construct(
             PlayerMovementController movementController,
             IInputService inputService,
-            IHealthObservable healthObservable)
+            IHealthObservable healthObservable,
+            PlayerInteractorController interactorController)
         {
             _movementController = movementController;
             _inputService = inputService;
             _healthObservable = healthObservable;
+            _interactorController = interactorController;
         }
 
         private void Start()
@@ -50,7 +53,6 @@ namespace _Project.Runtime.Player.Controllers
 
             _dashAction.performed += OnDashPerformed;
             _interactAction.performed += OnInteractPerformed;
-            
             _healthObservable.OnDeath += OnDeath;
         }
 
@@ -74,11 +76,15 @@ namespace _Project.Runtime.Player.Controllers
 
         private void OnInteractPerformed(InputAction.CallbackContext context)
         {
-            if (CurrentState is PlayerState.Dead)
+            if (CurrentState is PlayerState.Dead or PlayerState.Dashing)
                 return;
-            
-            if (CurrentState is PlayerState.Idle or PlayerState.Walking)
+
+            if (_interactorController.CanInteract()) 
+            {
                 SetState(PlayerState.Interacting);
+                
+                _interactorController.PerformInteraction();
+            }
         }
 
         public void FixedUpdate()
@@ -153,6 +159,12 @@ namespace _Project.Runtime.Player.Controllers
             transform.position = spawnPosition;
 
             OnStateChanged?.Invoke(CurrentState);
+        }
+        
+        public void EndInteraction()
+        {
+            if (CurrentState == PlayerState.Interacting)
+                UpdateMoveState();
         }
     }
 }

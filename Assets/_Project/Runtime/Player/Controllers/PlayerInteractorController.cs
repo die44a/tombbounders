@@ -1,4 +1,3 @@
-using System;
 using _Project.Runtime.Interfaces;
 using UnityEngine;
 using Zenject;
@@ -14,7 +13,6 @@ namespace _Project.Runtime.Player.Controllers
         private PlayerController _playerController;
         
         private IInteractable _currentHoveredInteractable;
-        private Collider2D _lastHitCollider;
 
         [Inject]
         public void Construct(PlayerController playerController)
@@ -30,32 +28,51 @@ namespace _Project.Runtime.Player.Controllers
         private void CheckForHover()
         {
             var origin = (Vector2)transform.position + originOffset;
-            var direction = _playerController.LastDirection;
-            var hit = Physics2D.Raycast(origin, direction, interactDistance, interactableLayer);
-
-            Debug.DrawRay(origin, direction * interactDistance, hit.collider ? Color.red : Color.green);
             
-            if (hit.collider == _lastHitCollider)
-                return;
+            var colliders = Physics2D.OverlapCircleAll(origin, interactDistance, interactableLayer);
 
-            _lastHitCollider = hit.collider;
+            IInteractable closestInteractable = null;
+            var minDistance = float.MaxValue;
 
-            IInteractable foundInteractable = null;
-
-            if (hit.collider)
+            foreach (var col in colliders)
             {
-                hit.collider.TryGetComponent(out foundInteractable);
+                if (col.TryGetComponent(out IInteractable interactable))
+                {
+                    var distance = Vector2.Distance(origin, col.transform.position);
+
+                    if (distance < minDistance)
+                    {
+                        minDistance = distance;
+                        closestInteractable = interactable;
+                    }
+                }
             }
     
-            if (foundInteractable != _currentHoveredInteractable)
+            if (closestInteractable != _currentHoveredInteractable)
             {
                 _currentHoveredInteractable?.OnHoverExit();
-                _currentHoveredInteractable = foundInteractable;
+                _currentHoveredInteractable = closestInteractable;
                 _currentHoveredInteractable?.OnHoverEnter();
             }
         }
 
-        public void PerformInteraction()
-            => _currentHoveredInteractable?.Interact(gameObject);
+        public void PerformInteraction() 
+        {
+            if (!CanInteract()) 
+                return;
+
+            _currentHoveredInteractable.Interact(gameObject, () => {
+                _playerController.EndInteraction(); 
+            });
+        }
+
+        private void OnDrawGizmosSelected()
+        {
+            Gizmos.color = Color.cyan;
+            Gizmos.DrawWireSphere((Vector2)transform.position + originOffset, interactDistance);
+        }
+        
+        public bool CanInteract() 
+            => _currentHoveredInteractable is { IsInteractable: true };
     }
 }
